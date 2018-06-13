@@ -1,0 +1,56 @@
+{
+	"globals": {
+		"url": "http://192.168.50.9:8080/procure2pay/",
+		"userName": "Shubham",
+		"password": "Hello",
+		"loggingEnabled": "false",
+		"assertions": [
+			{
+				"name": "globalAssertion1",
+				"description": "Checking the status of the API call",
+				"jsonPath": "$.data.content[?(@.id=='14')]"
+			}
+		]
+	},
+	"testcases": [
+		{
+			"name": "LDAP",
+			"description": "Integration check for checking the connectivity of LDAP",
+			"requestMappingUrl": "admin/masters/Employee/getPage?s=&p=0&ps=8&g=masters",
+			"requestMethod": "GET",
+			"loggingEnabled": "true",
+			"assertions": [
+				{
+					"name": "assertion1",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?(@.id=='14')]"
+				},
+				{
+					"name": "assertion2",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?(@.id=='14')]"
+				}
+			]
+		},
+		{
+			"name": "SFTP",
+			"description": "Integration check for checking the connectivity of LDAP",
+			"requestMappingUrl": "admin/masters/Employee/getPage?s=&p=0&ps=8&g=masters",
+			"requestMethod": "POST",
+			"loggingEnabled": "false",
+			"requestBody": "<<path to properties file>>",
+			"assertions": [
+				{
+					"name": "assertion1",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$[?(@.status=='FAILURE')]"
+				},
+				{
+					"name": "assertion2",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?(@.id=='14')]"
+				}
+			]
+		}
+	]
+}

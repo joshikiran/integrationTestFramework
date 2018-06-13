@@ -1,0 +1,67 @@
+{
+	"globals": {
+		"url": "http://192.168.50.9:8080/procure2pay/",
+		"userName": "Shubham",
+		"password": "Shubham",
+		"loggingEnabled": "true",
+		"assertions": [
+			{
+				"name": "statusCheck",
+				"description": "Checking the status of the API call",
+				"jsonPath": "$.data.content[?@id='23']"
+			},
+			{
+				"name": "statusCheck",
+				"description": "Checking the status of the API call",
+				"jsonPath": "$.data.content[?@id='23']"
+			}
+		]
+	},
+	"testcases": [
+		{
+			"name": "Checking LDAP Connectivity",
+			"description": "Integration check for checking the connectivity of LDAP",
+			"appUrl": "Optional parameter to overwrite global url",
+			"userName": "Shubham",
+			"password": "Shubham",
+			"requestMappingUrl": "admin/masters/Employee/getPage?s=&p=0&ps=8&g=masters",
+			"requestMethod": "GET",
+			"loggingEnabled": "true",
+			"assertions": [
+				{
+					"name": "statusCheck",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?@id='23']"
+				},
+				{
+					"name": "statusCheck",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?@id='23']"
+				}
+			]
+		},
+		{
+			"name": "Checking LDAP Connectivity",
+			"description": "Integration check for checking the connectivity of LDAP",
+			"appUrl": "Optional parameter to overwrite global url",
+			"userName": "Shubham",
+			"password": "Shubham",
+			"requestMappingUrl": "admin/masters/Employee/getPage?s=&p=0&ps=8&g=masters",
+			"requestMethod": "POST",
+			"loggingEnabled": "true",
+			"requestBody": "<<path to properties file>>",
+			"assertions": [
+				{
+					"name": "statusCheck",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?@id='23']"
+				},
+				{
+					"name": "statusCheck",
+					"description": "Checking the status of the API call",
+					"jsonPath": "$.data.content[?@id='23']"
+				}
+			]
+		}
+	]
+}
