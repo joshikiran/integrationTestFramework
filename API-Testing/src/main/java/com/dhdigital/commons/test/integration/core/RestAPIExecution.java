@@ -17,9 +17,29 @@ import com.dhdigital.commons.test.integration.commons.Logger;
 import com.dhdigital.commons.test.integration.commons.TestCase;
 import com.jayway.jsonpath.JsonPath;
 
+/**
+ * Functionalities which depends on API method execution are being dealt here.
+ * 
+ * @author joshi
+ *
+ */
 public class RestAPIExecution {
 	private static org.slf4j.Logger logger = LoggerFactory.getLogger(RestAPIExecution.class);
 
+	/**
+	 * It would take care of performing GET operation for each test case. As
+	 * mentioned in other methods, certain properties from global can be overwritten
+	 * in individual test case like appUrl, userName and password. This method will
+	 * takes all such parameters into considerations and executes GET request. The
+	 * result is then returned as a response so that the application goes further to
+	 * next test case.
+	 * 
+	 * @param commons
+	 * @param log
+	 * @param global
+	 * @param testCase
+	 * @return
+	 */
 	public Map<String, String> callGetRequest(Commons commons, Logger log, Global global, TestCase testCase) {
 		TestRestTemplate testRestTemplate = null;
 		String url = null;
@@ -42,6 +62,20 @@ public class RestAPIExecution {
 		return assertionsResponse;
 	}
 
+	/**
+	 * It would take care of performing POST operation for each test case. As
+	 * mentioned in other methods, certain properties from global can be overwritten
+	 * in individual test case like appUrl, userName and password. This method will
+	 * takes all such parameters into considerations and executes POST request. The
+	 * result is then returned as a response so that the application goes further to
+	 * next test case.
+	 * 
+	 * @param commons
+	 * @param log
+	 * @param global
+	 * @param testCase
+	 * @return
+	 */
 	public Map<String, String> callPostRequest(Commons commons, Logger log, Global global, TestCase testCase) {
 		TestRestTemplate testRestTemplate = null;
 		String url = null;
@@ -61,6 +95,18 @@ public class RestAPIExecution {
 		return assertionsResponse;
 	}
 
+	/**
+	 * Get's the complete url for individual test case. This url would be a
+	 * combination of baseUrl which can be configured either in globals or in
+	 * testcase along with mapping url. This url will then be used for either GET or
+	 * POST method calls.
+	 * 
+	 * @param commons
+	 * @param log
+	 * @param global
+	 * @param testCase
+	 * @return
+	 */
 	private String getUrl(Commons commons, Logger log, Global global, TestCase testCase) {
 		String url = null;
 		String reqMappingUrl = null;
@@ -77,6 +123,18 @@ public class RestAPIExecution {
 		return url;
 	}
 
+	/**
+	 * Takes care of validating the response object by running all the assertions
+	 * configured in each test case. Assertions can be set at global and also at
+	 * test case level. Global assertions would be evaluated for every test case
+	 * where as specific to test case would be executed at test case level.
+	 * 
+	 * @param log
+	 * @param global
+	 * @param testCase
+	 * @param responseObj
+	 * @return
+	 */
 	private Map<String, String> validateResponse(Logger log, Global global, TestCase testCase, String responseObj) {
 		String result = null;
 		List<Assertions> assertions = new ArrayList<Assertions>();
@@ -101,6 +159,18 @@ public class RestAPIExecution {
 		return assertionsResponse;
 	}
 
+	/**
+	 * Runs a single assertion on the response string jsonString. This jsonString
+	 * must and should be a json as the assertions would be having jsonPath which is
+	 * very specific to json objects.
+	 * 
+	 * @param log
+	 * @param global
+	 * @param testCase
+	 * @param assertion
+	 * @param jsonString
+	 * @return
+	 */
 	private String validateAssertion(Logger log, Global global, TestCase testCase, Assertions assertion,
 			String jsonString) {
 		String response = null;

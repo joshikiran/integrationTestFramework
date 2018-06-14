@@ -2,6 +2,14 @@ package com.dhdigital.commons.test.integration.commons;
 
 import java.util.List;
 
+/**
+ * Global configuration object which store configuration related to the
+ * application. It would include application url, credentials and assertions to
+ * run globally.
+ * 
+ * @author joshi
+ *
+ */
 public class Global {
 
 	private String url;

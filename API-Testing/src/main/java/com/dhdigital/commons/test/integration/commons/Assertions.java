@@ -1,5 +1,12 @@
 package com.dhdigital.commons.test.integration.commons;
 
+/**
+ * Assertions POJO. This object holds the assertions details for any test
+ * case(s).
+ * 
+ * @author joshi
+ *
+ */
 public class Assertions {
 
 	private String name;

@@ -2,6 +2,15 @@ package com.dhdigital.commons.test.integration.commons;
 
 import java.util.List;
 
+/**
+ * TestCase object which would store the details regarding each test case.
+ * Details include what would be the url which would be used for testing,
+ * whether logging is enabled or not and what all assertions should be executed
+ * for every test case.
+ * 
+ * @author joshi
+ *
+ */
 public class TestCase {
 	private String name;
 	private String description;

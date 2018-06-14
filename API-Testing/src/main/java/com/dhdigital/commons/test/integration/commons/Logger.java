@@ -2,6 +2,14 @@ package com.dhdigital.commons.test.integration.commons;
 
 import org.slf4j.LoggerFactory;
 
+/**
+ * Custom logger implementation which would try to log only when its needed.
+ * This would be a wrapper over SLF4J implementation there by giving more
+ * control on the logging mechanism.
+ * 
+ * @author joshi
+ *
+ */
 public class Logger {
 
 	private static org.slf4j.Logger logger = LoggerFactory.getLogger(Logger.class);
