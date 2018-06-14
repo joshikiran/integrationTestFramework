@@ -17,6 +17,8 @@ import com.dhdigital.commons.test.integration.commons.Logger;
 import com.dhdigital.commons.test.integration.commons.TestCase;
 import com.jayway.jsonpath.JsonPath;
 
+import net.minidev.json.JSONArray;
+
 /**
  * Functionalities which depends on API method execution are being dealt here.
  * 
@@ -141,8 +143,10 @@ public class RestAPIExecution {
 		Map<String, String> assertionsResponse = null;
 		try {
 			log.log(global, testCase, "Converting the object into Json");
-			assertions.addAll(global.getAssertions());
-			assertions.addAll(testCase.getAssertions());
+			if (null != global.getAssertions())
+				assertions.addAll(global.getAssertions());
+			if (null != testCase.getAssertions())
+				assertions.addAll(testCase.getAssertions());
 			if (null == assertions || assertions.size() == 0) {
 				log.log(global, testCase, "No Assertions are configured for test case {} ", testCase.getName());
 			} else {
@@ -175,13 +179,13 @@ public class RestAPIExecution {
 			String jsonString) {
 		String response = null;
 		String jsonPath = null;
-		Object obj = null;
+		JSONArray obj = null;
 		try {
 			log.log(global, testCase, "Validating assertion {} ", assertion.getName());
 			jsonPath = assertion.getJsonPath();
 			obj = JsonPath.read(jsonString, jsonPath);
-			if (null == obj)
-				response = "FAILURE";
+			if (null == obj || obj.size() == 0)
+				response = "FAILURE-" + jsonPath;
 			else
 				response = "SUCCESS";
 		} catch (Exception e) {

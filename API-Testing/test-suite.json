@@ -1,16 +1,10 @@
 {
 	"globals": {
+		"testSuiteName": "TestSuite Name",
 		"url": "http://192.168.50.9:8080/procure2pay/",
 		"userName": "Shubham",
 		"password": "Hello",
-		"loggingEnabled": "false",
-		"assertions": [
-			{
-				"name": "globalAssertion1",
-				"description": "Checking the status of the API call",
-				"jsonPath": "$.data.content[?(@.id=='14')]"
-			}
-		]
+		"loggingEnabled": "false"
 	},
 	"testcases": [
 		{

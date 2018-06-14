@@ -84,7 +84,7 @@ public class RunTestSuite {
 				tcResults.put(tc.getName(), tcResult);
 			}
 			log.log(globals, "Printing the Results of Test Cases");
-			printResults(tcResults);
+			printResults(globals, tcResults);
 		} catch (Exception e) {
 			logger.error("Exception while running the test suite {}", testSuiteConfig);
 			throw new RuntimeException("Exception while running the test suite with details ", e);
@@ -120,13 +120,15 @@ public class RunTestSuite {
 	 * @param tcResults
 	 */
 	@SuppressWarnings("unchecked")
-	private void printResults(Map<String, Object> tcResults) {
+	private void printResults(Global globals, Map<String, Object> tcResults) {
 		Set<String> tcList = tcResults.keySet();
 		Map<String, String> assertion = null;
 		Set<String> assertionKeys = null;
 		logger.info("*****************");
+		logger.info("Test Suite : {}",globals.getTestSuiteName());
+		logger.info("*****************");
 		for (String tc : tcList) {
-			logger.info("{}", tc);
+			logger.info("Test Case : {}", tc);
 			logger.info("------------------");
 			assertion = (Map<String, String>) tcResults.get(tc);
 			assertionKeys = assertion.keySet();
@@ -135,6 +137,5 @@ public class RunTestSuite {
 			}
 			logger.info("------------------");
 		}
-		logger.info("*****************");
 	}
 }

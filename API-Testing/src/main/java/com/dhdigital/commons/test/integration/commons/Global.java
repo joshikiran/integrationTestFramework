@@ -12,10 +12,19 @@ import java.util.List;
  */
 public class Global {
 
+	private String testSuiteName;
 	private String url;
 	private String userName;
 	private String password;
 	private boolean isLoggingEnabled;
+
+	public String getTestSuiteName() {
+		return testSuiteName;
+	}
+
+	public void setTestSuiteName(String testSuiteName) {
+		this.testSuiteName = testSuiteName;
+	}
 
 	public boolean isLoggingEnabled() {
 		return isLoggingEnabled;

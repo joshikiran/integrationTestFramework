@@ -5,7 +5,7 @@
 
 	<groupId>com.dhdigital.commons</groupId>
 	<artifactId>integration-testing</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>API-Testing</name>
@@ -51,8 +51,19 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<finalName>ApiTesting-${version}</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
